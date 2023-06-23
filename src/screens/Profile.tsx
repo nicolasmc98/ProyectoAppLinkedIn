@@ -4,7 +4,7 @@ import { Text, View } from 'react-native'
 export const Profile = () => {
   return (
     <View>
-        <Text> Hola perfil</Text>
+        <Text style={{textAlign:'center', fontSize: 50, flexDirection:'row'}}> Perfil</Text>
     </View>
   )
 }

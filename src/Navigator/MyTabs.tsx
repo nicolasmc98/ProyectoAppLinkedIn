@@ -10,7 +10,9 @@ function MyTabs() {
     <Tab.Navigator
     activeColor='#f4f8e6'
     inactiveColor='#f4f8e6'
+
     barStyle={{ backgroundColor: '#272d4d' }}
+
     >
       <Tab.Screen name="RutApi" component={RutApi} options={{title:"Buscar", tabBarIcon: ({ color }) => (
             <Icon name="search-circle-outline" color={color} size={26}  />

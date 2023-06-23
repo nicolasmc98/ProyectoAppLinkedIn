@@ -14,7 +14,6 @@ export const Login = ({navigation}: Props) => {
   const auth = getAuth();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [loading, setLoading] = useState(false);
 
   const handleLogin = () => {
     if (email === "") {
@@ -23,18 +22,15 @@ export const Login = ({navigation}: Props) => {
     if (password === "") {
       Alert.alert("Ingresa una contraseña por favor");
     } else {
-      setLoading(true);
       signInWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
           const user = userCredential.user;
-          setLoading(false);
           navigation.navigate("MyTabs");
         })
         .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
           Alert.alert(error.message);
-          setLoading(false);
         });
     }
   };

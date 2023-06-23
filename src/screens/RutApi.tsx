@@ -14,26 +14,34 @@ export const RutApi = () => {
   const [rut, setRut] = useState('');
   const [activities, setActivities] = useState(new Map());
   const [name, setName] = useState('');
+
   
 
   const SearchData = () => {
 
     if (rut === "") {
       Alert.alert ("Ingresa un rut por favor")
+    } else if (rut.length >= 10 ) {
+      Alert.alert ("Ingresa un rut valido por favor")
     } else {
-
     const url = `https://api.libreapi.cl/rut/activities?rut=${encodeURIComponent(rut)}`;
     
     fetch(url)
     .then(response => response.json())
+    
     .then(obj => {
-      // Almacenar los datos en el estado
+      if (obj.status === "fail") {
+        Alert.alert("No valido, ingresa otro rut")
+      } else {
       setActivities( new Map(Object.entries(obj.data.activities)));
+    
       
       if (obj.data.name !== "" && obj.data.name !== undefined && obj.data.name !== null ) {
         let newName = JSON.stringify(obj.data.name)
         setName(newName.replaceAll('"',""))
-      }
+      } 
+      
+    }   
     })
     .catch(error => {
       // Manejar el error en caso de que ocurra
@@ -47,8 +55,10 @@ export const RutApi = () => {
     const Test = Object.fromEntries(activities);
 
     for (let i in Test) {
-      console.log(Test)
-    
+      
+      let newDate = Test[i].date; // La cadena de fecha en formato ISO 8601
+      let newDateFormat = new Date(newDate).toDateString();
+  
       return (
         <SafeAreaView style={{ flex: 1, justifyContent: 'center' }}>
         <View style={styles.container}>
@@ -56,10 +66,10 @@ export const RutApi = () => {
           <Text style={{marginTop: 18}}>Nombre de la sociedad: {Test[i].name}</Text>
           <Text>Codigo: {Test[i].code}</Text>
           <Text>Categoria: {Test[i].category}</Text>
-          <Text>Fecha: {Test[i].date}</Text>
+          <Text>Fecha: {newDateFormat}</Text>
           <Text>Nombre: {name}</Text>
           <Text>Rut: {rut}</Text>
-
+           
           
         </View>
         </SafeAreaView>
@@ -78,7 +88,7 @@ export const RutApi = () => {
             source={require('../images/descarga.png')}
             height={300}
             width={300}
-            
+             
           />
        </View>
 
@@ -98,7 +108,7 @@ export const RutApi = () => {
               marginBottom: 25,
               flex: 1,
             }} 
-            placeholder="Buscar por rut"
+            placeholder="Ingresa un rut (sin puntos ni guiones)"
             placeholderTextColor={'#272d4d'}
             onChangeText={(val) => setRut(val)}
             
@@ -111,7 +121,7 @@ export const RutApi = () => {
         <View> 
                
         </View>
- 
+         
         {activities && (
           <View style={{alignItems:'center'}}>
             
