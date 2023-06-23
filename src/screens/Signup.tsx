@@ -46,9 +46,9 @@ export const Signup = () => {
   return (
     <SafeAreaView style={{ flex: 1, justifyContent: 'center' }}>
       <View style={{ paddingHorizontal: 25 }}>
-        <View style={{ alignItems: 'center' }}>
+        <View style={{ alignItems: 'center', paddingBottom: 50 }}>
           <Image
-            source={require('../images/launch_screen.png')}
+            source={require('../images/descarga.png')}
             height={300}
             width={300}
           />
@@ -62,26 +62,27 @@ export const Signup = () => {
             color: '#333',
             marginBottom: 30,
           }}>
-          Register
+          Registrarse
         </Text>
 
         <View style={{ flexDirection: 'row', alignItems: 'center' }}>
           <MaterialIcons
             name="alternate-email"
             size={20}
-            color="#666"
-            style={{ marginRight: 5 }}
+            color="#272d4d"
+            style={{ marginRight: 5, marginBottom:20 }}
           />
           <TextInput
             style={{
               flexDirection: 'row',
-              borderBottomColor: '#ccc',
+              borderBottomColor: '#272d4d',
               borderBottomWidth: 1,
               paddingBottom: 8,
               marginBottom: 25,
               flex: 1,
             }}  
             placeholder="Email"
+            placeholderTextColor={'#272d4d'}
             keyboardType='email-address'
             onChangeText={(val) => setEmail(val)}
             
@@ -93,19 +94,20 @@ export const Signup = () => {
           <Ionicons
             name="ios-lock-closed-outline"
             size={20}
-            color="#666"
-            style={{marginRight: 5}}
+            color="#272d4d"
+            style={{marginRight: 5, marginBottom:20}}
           />
           <TextInput
             style={{
               flexDirection: 'row',
-              borderBottomColor: '#ccc',
+              borderBottomColor: '#272d4d',
               borderBottomWidth: 1,
               paddingBottom: 8,
               marginBottom: 25,
               flex: 1,
             }} 
-            placeholder="Password"
+            placeholder="Contraseña"
+            placeholderTextColor={'#272d4d'}
             secureTextEntry={true}
             onChangeText={(val) => setPassword(val)}
             
@@ -117,19 +119,20 @@ export const Signup = () => {
           <Ionicons
             name="ios-lock-closed-outline"
             size={20}
-            color="#666"
-            style={{marginRight: 5}}
+            color="#272d4d"
+            style={{marginRight: 5, marginBottom:20}}
           />
           <TextInput
             style={{
               flexDirection: 'row',
-              borderBottomColor: '#ccc',
+              borderBottomColor: '#272d4d',
               borderBottomWidth: 1,
               paddingBottom: 8,
               marginBottom: 25,
               flex: 1,
             }} 
-            placeholder="ConfirmPass"
+            placeholder="Confirmar contraseña"
+            placeholderTextColor={'#272d4d'}
             secureTextEntry={true}
             onChangeText={(val) => setConfirmPass(val)}
             
@@ -137,7 +140,7 @@ export const Signup = () => {
           
         </View>
 
-        <CustomButton value={"Register"} onPress={handleSignUp}  />
+        <CustomButton value={"Registrar"} onPress={handleSignUp}  />
 
         <View
           style={{
@@ -145,9 +148,9 @@ export const Signup = () => {
             justifyContent: 'center',
             marginBottom: 30,
           }}>
-          <Text>Already registered?</Text>
+          <Text>Ya estás registrado?</Text>
           <TouchableOpacity onPress={() => navigation.goBack()}>
-            <Text style={{color: '#AD40AF', fontWeight: '700'}}> Login</Text>
+            <Text style={{color: '#272d4d', fontWeight: '700'}}> Iniciar sesión</Text>
           </TouchableOpacity>
         </View>
       </View>
