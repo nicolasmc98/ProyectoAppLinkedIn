@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
-import { Text, View,Image, Alert } from 'react-native'
+import { Text, View,Image, Alert, StyleSheet } from 'react-native'
 import { TextInput } from 'react-native-gesture-handler';
 import { SafeAreaView } from 'react-native-safe-area-context'
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import CustomButton from '../components/CustomButtom';
+import styles from '../AppTheme/AppTheme';
+
 
   
 
@@ -45,15 +47,22 @@ export const RutApi = () => {
     const Test = Object.fromEntries(activities);
 
     for (let i in Test) {
+      console.log(Test)
     
       return (
-        <View>
-          <Text>{Test[i].name}</Text>
-          <Text>{Test[i].code}</Text>
-          <Text>{Test[i].category}</Text>
-          <Text>{Test[i].date}</Text>
+        <SafeAreaView style={{ flex: 1, justifyContent: 'center' }}>
+        <View style={styles.container}>
+          <Text style={{fontSize: 25,color: '#272d4d'}}>Información</Text>
+          <Text style={{marginTop: 18}}>Nombre de la sociedad: {Test[i].name}</Text>
+          <Text>Codigo: {Test[i].code}</Text>
+          <Text>Categoria: {Test[i].category}</Text>
+          <Text>Fecha: {Test[i].date}</Text>
+          <Text>Nombre: {name}</Text>
+          <Text>Rut: {rut}</Text>
+
           
         </View>
+        </SafeAreaView>
       );
     };
   
@@ -104,11 +113,8 @@ export const RutApi = () => {
         </View>
  
         {activities && (
-          <View>
+          <View style={{alignItems:'center'}}>
             
-            <Text>Información</Text>
-            <Text>Nombre: {name}</Text>
-            <Text>Rut: {rut}</Text>
             <Text>{getActivities()} </Text>
              
             {/* Otros campos de datos */}

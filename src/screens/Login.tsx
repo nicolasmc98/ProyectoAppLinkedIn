@@ -57,7 +57,7 @@ export const Login = ({navigation}: Props) => {
             color: '#333',
             marginBottom: 30,
           }}>
-          Iniciar Sesión
+          Iniciar sesión
         </Text>
 
         <View style={{ flexDirection: 'row', alignItems: 'center' }}>
